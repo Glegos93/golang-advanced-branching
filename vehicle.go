@@ -1,26 +1,16 @@
 package main
 
-import (
-	"strings"
-	"encoding/json"
-	"io/ioutil"
-	"log"
-	"os"
-)
-
 type vehicle interface {
 }
 
 type car struct {
 	model       string
-	make        string
 	name        string
 	typeVehicle string
 }
 
 type truck struct {
 	model       string
-	make        string
 	name        string
 	typeVehicle string
 }
@@ -47,11 +37,6 @@ type feedbackResult struct {
 	feedbackNegative int
 	feedbackNeutral  int
 }
-
-var vehicleResult map[string]feedbackResult
-
-var inventory []vehicle
-
 type rating float32
 
 const (
@@ -64,30 +49,32 @@ const (
 
 func init() {
 
-	inventory = []vehicle{
-		bike{"FTR 1200", "Indian"},
-		bike{"Iron 1200", "Harley"},
-		car{"Sonata", "Hyundai", "Sedan"},
-		car{"SantaFe", "Hyundai", "SUV"},
-		car{"Civic", "Honda", "Hatchback"},
-		car{"A5", "Audi", "Coupe"},
-		car{"Mazda6", "Mazda", "Sedan"},
-		car{"CRV", "Honda", "SUV"},
-		car{"Camry", "Toyota", "Sedan"},
-		truck{"F-150", "Ford", "Truck"},
-		truck{"RAM1500", "Dodge", "Truck"}}
-
-	vehicleResult = make(map[string]feedbackResult)
+	/*
+		inventory = []vehicle{
+			bike{"FTR 1200", "Indian"},
+			bike{"Iron 1200", "Harley"},
+			car{"Sonata", "Hyundai", "Sedan"},
+			car{"SantaFe", "Hyundai", "SUV"},
+			car{"Civic", "Honda", "Hatchback"},
+			car{"A5", "Audi", "Coupe"},
+			car{"Mazda6", "Mazda", "Sedan"},
+			car{"CRV", "Honda", "SUV"},
+			car{"Camry", "Toyota", "Sedan"},
+			truck{"F-150", "Ford", "Truck"},
+			truck{"RAM1500", "Dodge", "Truck"}}
+	*/
+	//	vehicleResult = make(map[string]feedbackResult)
 
 }
 
 func main() {
 
 	// Generate ratings for the different vehicles
-	generateRating()
+
 	// Print ratings for the different vehicles
 }
 
+/*
 func readJSONFile() Values {
 	jsonFile, err := os.Open("feedback.json")
 
@@ -103,44 +90,4 @@ func readJSONFile() Values {
 
 	return content
 }
-
-func generateRating() {
-	f := readJSONFile
-}
-
-for _, v := range f.Models {
-	
-	var vehResult feedbackResult
-
-	var vehRating rating
-
-	for _, msg := range v.Feedback {
-		if text := strings.Split(msg, " "); len(text) >= 5{
-			vehRating = 5.0
-			vehResult.feedbackTotal++
-
-			for_, word := range text {
-				switch s:= strings.Trim(strings.ToLower(word), " ,.,!,?,\t,\n,\r"); s{
-				case "pleasure", "impressed", "wonderful", "fantastic", "splendid":
-					vehRating += extraPositive
-				case "help", "helpful", "thanks", "thank you", "happy":
-					vehRating += positive
-				case "not helpful", "sad", "angry", "improve", "annoy":
-					vehRating += negative
-				case "pathetic", "bad", "worse", "unfortunately", "agitated", "frustrated":
-					vehRating += extraNegative
-				}
-			}
-
-			switch {
-			case vehRating > 8.0:
-				vehResult.feedbackPositive++
-			case vehRating >= 4.0 && vehRating <= 8.0:
-				vehResult.feedbackNeutral++
-			case vehRating < 4.0:
-				vehResult.feedbackNegative++
-			}
-		}
-	}
-	vehResult = vehicleResult[v.Name]
-}
+*/
