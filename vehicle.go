@@ -40,6 +40,8 @@ type feedbackResult struct {
 
 var vehicleResult map[string]feedbackResult
 
+var inventory []vehicle
+
 type rating float32
 
 const (
